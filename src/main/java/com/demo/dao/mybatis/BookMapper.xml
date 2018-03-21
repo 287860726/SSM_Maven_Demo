@@ -7,5 +7,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	<select id="getAllBook" resultType="Book">
 		select * from book;
 	</select>
+	
+	<insert id="AddBook" parameterType="Book">
+		insert into book(name,price,author) values(#{name},#{price},#{author})
+	</insert>
 
+	<delete  id="DelOneBook" parameterType="Book">
+		delete from book where id = #{id}
+	</delete >
+
+	<insert id="AddMoreBook" parameterType="java.util.List">
+		insert into book(name,price,author) values
+		<foreach collection="books" item="book" separator=",">
+			(#{book.name},#{book.price},#{book.author})
+		</foreach>
+	</insert>
 </mapper>

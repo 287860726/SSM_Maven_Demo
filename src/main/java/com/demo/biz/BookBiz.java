@@ -19,4 +19,34 @@ public class BookBiz {
 		books = bookdao.getAllBook();
 		return books;
 	}
+	
+	public boolean AddBook(Book book) throws Exception {
+		try {
+			bookdao.AddBook(book);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+	}
+	
+	public boolean DelOneBook(Book book) throws Exception {
+		try {
+			bookdao.DelOneBook(book);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+	}
+	
+	public boolean AddMoreBook(List<Book> books) throws Exception {
+		try {
+			bookdao.AddMoreBook(books);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+	}
 }

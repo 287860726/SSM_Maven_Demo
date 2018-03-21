@@ -2,6 +2,7 @@ package com.demo.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +19,38 @@ public class BookDao {
 		List<Book> books = null;
 		books = bookMapper.getAllBook();
 		return books;
+	}
+	
+	public boolean AddBook(Book book) throws Exception{
+		try {
+			bookMapper.AddBook(book);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+	}
+	
+	public boolean DelOneBook(Book book) throws Exception{
+		try {
+			bookMapper.DelOneBook(book);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean AddMoreBook(@Param("books")List<Book> books) throws Exception{
+		try {
+			bookMapper.AddMoreBook(books);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }
