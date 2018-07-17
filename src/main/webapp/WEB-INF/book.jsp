@@ -13,6 +13,9 @@
 <title>测试页面</title>
 </head>
 <script type="text/javascript">
+function gohome(){
+	window.location.href = "<%=basePath %>BookController/index.do";		
+}
 // 		$("#xiu").click(function(){
 //			 		$.ajax(
 //			 		{
@@ -31,35 +34,36 @@
 //			 		});
 // 				});
 
-// 		$("#del").click(function()
-// 		{
-// 			alert("--------------")
+		
+// 		function deleteBook(varid,reg){
 // 			$.ajax({
 <%-- 				url:'<%=basePath%>/BookController/delOneBook.do', --%>
-// 				console.info(url)
 // 				type:'post',
 // 				async:true,
 // 				data:{
-// 					id:$('#xiu').attr('value')
+// 					'id':varid
 // 				},
 // 				success:function(data){
+// 					$(reg).parents('tr').remove();
 // 					alert('删除成功');
 // 				},
 // 				error:function(data){
 // 					alert('删除失败');
 // 				}
 // 			});
-// 		});
+// 		}
 		
-		function deleteBook(varid){
+		//模仿事物，删除书籍同时，删除作者
+		function deleteBook(varid,reg){
 			$.ajax({
-				url:'<%=basePath%>/BookController/delOneBook.do',
+				url:'<%=basePath%>/BookController/DelBookAndAuthor.do',
 				type:'post',
 				async:true,
 				data:{
 					'id':varid
 				},
 				success:function(data){
+					$(reg).parents('tr').remove();
 					alert('删除成功');
 				},
 				error:function(data){
@@ -69,6 +73,7 @@
 		}
 </script>
 <body>
+	<button id="gohome" onclick="gohome()">返回主页</button>
 	<table align="center" width="500px" border="1px">
 		<thead align="center">
 			<td>编号</td>
@@ -77,15 +82,16 @@
 			<td>价格</td>
 			<td>操作</td>
 		</thead>
-		<c:forEach var="book" items="${books}">
+		<c:forEach var="bookAuthor" items="${bookAuthors}">
 			<tr align="center">
-				<td>${book.id}</td>
-				<td>${book.name}</td>
-				<td>${book.author}</td>
-				<td>${book.price}</td>
+				<td>${bookAuthor.bookid}</td>
+				<td>${bookAuthor.bookname}</td>
+				<td>${bookAuthor.authorname}</td>
+				<td>${bookAuthor.bookprice}</td>
 				<td>
-					<button id="xiu${book.id}" value="${book.id}">修改</button>
-					<button id="del${book.id}" value="${book.id}" onclick="deleteBook('${book.id}')">删除</button>
+					<a id="xiu${bookAuthor.bookid}" value="${bookAuthor.bookid}"
+						href="<%=basePath%>book/bookAction_AddBook.action?id=${bookAuthor.bookid}&reg=update">修改</a>
+					<button id="del${bookAuthor.bookid}" value="${bookAuthor.bookid}" onclick="deleteBook(${bookAuthor.bookid},this)">删除</button>
 				</td>
 			</tr>
 		</c:forEach>

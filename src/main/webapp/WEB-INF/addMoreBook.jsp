@@ -4,15 +4,17 @@
 <html>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="/css/newtable.css" />
 <title>添加图书</title>
 </head>
 <body>
-	<form action="<%=basePath %>/BookController/AddMoreBook.do" method="post">
-		<table border="1" width="200px" height="200px" align="center">
+	<form action="<%=basePath%>/BookController/AddMoreBook.do" method="post">
+		<table border="1" width="500px" height="200px" align="center">
 			<input type="hidden" name="reg" value="1">
 			<tr>
 				<td colspan="2">第一本书</td>
@@ -26,7 +28,12 @@
 			<tr>
 				<td>作者</td>
 				<td>
-					<input type="text" name="author">
+					<select name="authorid" id="authorid">
+						<option>--选择作者--</option>
+						<c:forEach var="author" items="${authors }">
+							<option value="${author.id }" <c:if test="${author.id==book.authorid }">selected</c:if>>${author.name }</option>
+						</c:forEach>
+					</select>
 				</td>
 			</tr>
 			<tr>
@@ -35,7 +42,7 @@
 					<input type="text" name="price">
 				</td>
 			</tr>
-	
+
 			<tr>
 				<td colspan="2">第二本书</td>
 			</tr>
@@ -48,7 +55,12 @@
 			<tr>
 				<td>作者</td>
 				<td>
-					<input type="text" name="author1">
+					<select name="authorid1" id="authorid">
+						<option>--选择作者--</option>
+						<c:forEach var="author" items="${authors }">
+							<option value="${author.id }" <c:if test="${author.id==book.authorid }">selected</c:if>>${author.name }</option>
+						</c:forEach>
+					</select>
 				</td>
 			</tr>
 			<tr>

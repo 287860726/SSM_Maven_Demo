@@ -15,4 +15,6 @@ public interface IBookMapper {
 	public boolean DelOneBook(Book book) throws Exception;
 
 	public boolean AddMoreBook(@Param("books")List<Book> books) throws Exception;
+	
+	public Book getBook(Book book) throws Exception;
 }

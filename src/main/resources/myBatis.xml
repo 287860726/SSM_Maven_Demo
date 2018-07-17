@@ -9,12 +9,12 @@
 
 	<!-- 别名 -->
 	<typeAliases>
-		<typeAlias alias="User" type="com.demo.entity.User" />
+		<typeAlias alias="Author" type="com.demo.entity.Author" />
 		<typeAlias alias="Book" type="com.demo.entity.Book" />
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="com/demo/dao/mybatis/UserMapper.xml" />
+		<mapper resource="com/demo/dao/mybatis/AuthorMapper.xml" />
 		<mapper resource="com/demo/dao/mybatis/BookMapper.xml" />
 	</mappers>
 </configuration>

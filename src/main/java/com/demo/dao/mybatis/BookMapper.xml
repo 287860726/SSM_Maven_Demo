@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	</select>
 	
 	<insert id="AddBook" parameterType="Book">
-		insert into book(name,price,author) values(#{name},#{price},#{author})
+		insert into book(name,price,authorid) values(#{name},#{price},#{authorid})
 	</insert>
 
 	<delete  id="DelOneBook" parameterType="Book">
@@ -17,9 +17,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	</delete >
 
 	<insert id="AddMoreBook" parameterType="java.util.List">
-		insert into book(name,price,author) values
+		insert into book(name,price,authorid) values
 		<foreach collection="books" item="book" separator=",">
-			(#{book.name},#{book.price},#{book.author})
+			(#{book.name},#{book.price},#{book.authorid})
 		</foreach>
 	</insert>
+	
+	<select id="getBook" resultType="Book">
+		select * from book where id = #{id}
+	</select>
 </mapper>

@@ -10,7 +10,7 @@
 	<table border="1" width="200px" height="200px" align="center">
 		<tr>
 			<td>
-				<a href="http://127.0.0.1:8080/SSM_Maven_Demo/UserController/getAllUser.do">用户</a>
+				<a href="http://127.0.0.1:8080/SSM_Maven_Demo/AuthorController/getAllUser.do">用户</a>
 			</td>
 		</tr>
 		<tr>

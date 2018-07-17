@@ -9,33 +9,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>添加图书</title>
+<script type="text/javascript">
+	function gohome(){
+		window.location.href = "<%=basePath %>BookController/index.do";			
+	}
+</script>
 </head>
 <body>
-	<form action="<%=basePath %>/BookController/AddBook.do" method="post">
-		<table border="1" width="200px" height="200px" align="center">
+	<button id="gohome" onclick="gohome()">返回主页</button>
+	<form action="<%=basePath %>BookController/AddBook.do" method="post">
+		<table border="1" width="500px" height="200px" align="center">
 			<input type="hidden" name="reg" value="1">
-			<tr>
+			<input type="hidden" name="id" value="${book.id }">
+			<tr align="center">
 				<td>书名</td>
 				<td>
-					<input type="text" name="bookname">
+					<input type="text" name="bookname" value="${book.name }">
 				</td>
 			</tr>
-			<tr>
+			<tr align="center">
 				<td>作者</td>
 				<td>
-					<input type="text" name="author">
+					<select name="authorid" id="authorid">
+						<option>--选择作者--</option>
+						<c:forEach var="author" items="${authors }">
+							<option value="${author.id }" <c:if test="${author.id==book.authorid }">selected</c:if> >${author.name }</option>
+						</c:forEach>
+					</select>
 				</td>
 			</tr>
-			<tr>
+			<tr align="center">
 				<td>价格</td>
 				<td>
-					<input type="text" name="price">
+					<input type="text" name="price" value="${book.price }">
 				</td>
 			</tr>
-			<tr>
+			<tr align="center">
 				<td colspan="2">
 					<input type="submit" value="提交">
 				</td>
+			</tr>
+			<tr align="center">
+				<td colspan="2">${msg}</td>
 			</tr>
 		</table>
 	</form>

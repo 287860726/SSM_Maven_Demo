@@ -27,6 +27,7 @@ public class BookDao {
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -34,11 +35,13 @@ public class BookDao {
 	public boolean DelOneBook(Book book) throws Exception{
 		try {
 			bookMapper.DelOneBook(book);
+//			throw new Exception("删除数据出错！！！");
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			return false;
+			throw e;
+//			return false;
 		}
 	}
 	
@@ -52,5 +55,10 @@ public class BookDao {
 			return false;
 		}
 	}
-
+	
+	public Book getBook(Book book) throws Exception{
+		Book book1 = new Book();
+		book1 = bookMapper.getBook(book);
+		return book1;
+	}
 }

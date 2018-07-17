@@ -1,40 +1,42 @@
 package com.demo.entity;
 
 public class Book {
-	private int id;
-	private String name;
-	private int price;
-	private String author;
 
-	public int getId() {
-		return id;
+	private Integer id;
+	private String name;
+	private Integer price;
+	private Integer authorid;
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public int getPrice() {
-		return price;
+	public Integer getPrice() {
+		return this.price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 
-	public String getAuthor() {
-		return author;
+	public Integer getAuthorid() {
+		return this.authorid;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthorid(Integer authorid) {
+		this.authorid = authorid;
 	}
+
 }
